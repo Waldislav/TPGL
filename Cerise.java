@@ -2,17 +2,17 @@
  *
  * @author roudet
  */
-public class Orange {
+public class Cerise {
     private double prix;
     private String origine;
 	
-    public Orange() 
+    public Cerise() 
     {
-        this.prix = 0.5;  //prix en euros
-        this.origine="Espagne";
+        this.prix = 0.6;  //prix en euros
+        this.origine="Italie";
     }
     
-    public Orange(double prix, String origine) 
+    public Cerise(double prix, String origine) 
     {
 	if(prix < 0)
 	    this.prix = -prix;  //une solution possible pour interdire les prix negatifs
@@ -20,7 +20,7 @@ public class Orange {
 	    this.prix = prix;
 
 	if(origine.equals("") || origine == null)
-            this.origine = "Espagne";  //Espagne par défaut
+            this.origine = "Italie";  //Espagne par défaut
 	else
             this.origine = origine;   
     }
@@ -49,14 +49,14 @@ public class Orange {
 
     @Override
     public String toString(){
-        return "Orange de " + origine + " a " + prix + " euros";
+        return "Cerise de " + origine + " a " + prix + " euros";
     }
 
     @Override
     public boolean equals(Object o){  //predicat pour tester si 2 oranges sont equivalentes
         if(o != null && getClass() == o.getClass()){
-            Orange or = (Orange) o;
-            return (prix == or.prix && origine.equals(or.origine));
+            Cerise cer = (Cerise) o;
+            return (prix == cer.prix && origine.equals(cer.origine));
         }
         return false;
     }
@@ -68,21 +68,20 @@ public class Orange {
 
     public static void main (String[] args){
         //Ecrire ici vos tests
-        Orange o1 = new Orange();
-        Orange o2 = new Orange(1,"Colombie");
-        Orange o3 = new Orange(-10,"");
-        System.out.println("L'orange 1 : "+o1);
-        System.out.println("L'orange 2 : "+o2);
-        System.out.println("L'orange 3 : "+o3);
+        Cerise c1 = new Cerise();
+        Cerise c2 = new Cerise(1,"Colombie");
+        Cerise c3 = new Cerise(-10,"");
+        System.out.println("La cerise 1 : "+c1);
+        System.out.println("La cerise 2 : "+c2);
+        System.out.println("La cerise 3 : "+c3);
         System.out.println("");
-        o1.setPrix(1.5);
-        o2.setOrigine("Portugal");
-        System.out.println("Prix Orange 1 : "+o1.getPrix());
-        System.out.println("Origine Orange 1 : "+o1.getOrigine());
+        c1.setPrix(1.5);
+        c2.setOrigine("Portugal");
+        System.out.println("Prix cerise 1 : "+c1.getPrix());
+        System.out.println("Origine cerise 1 : "+c1.getOrigine());
         System.out.println("");
-        System.out.println("Prix Orange 2 : "+o2.getPrix());
-        System.out.println("Origine Orange 2 : "+o2.getOrigine());
-	//System.out.println("premier test Orange");
+        System.out.println("Prix cerise 2 : "+c2.getPrix());
+        System.out.println("Origine cerise 2 : "+c2.getOrigine());
    }
 }
 
