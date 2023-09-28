@@ -1,24 +1,27 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.model;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.*;
 
 /**
  *
  * @author roudet
  */
-public class Panier {
+public class Panier{
     private ArrayList<Fruit> fruits; // attribut pour stocker les fruits
     private int contenanceMax; // nb maximum d'oranges que peut contenir le panier
+    PropertyChangeSupport pcs;
 
     // groupe 1
     public Panier(int contenanceMax) { // initialise un panier vide ayant une certaine contenance maximale (precisee en
                                        // parametre)
         this.fruits = new ArrayList<Fruit>();
         this.contenanceMax = contenanceMax;
+        pcs = new PropertyChangeSupport(this);
     }
 
     @Override
-
     public String toString() { // affichage de ce qui est contenu dans le panier : liste des fruits presents
         String res = "";
         String newLine = System.getProperty("line.separator");
@@ -27,16 +30,18 @@ public class Panier {
         }
         return res;
     }
+    
+    public void addObserver(PropertyChangeListener l) {
+	pcs.addPropertyChangeListener("value", l);
+    }
 
     // groupe 2
     public ArrayList<Fruit> getFruits() { // accesseur du premier attribut
-
         return this.fruits;
     }
 
     public void setFruits(ArrayList<Fruit> fruits) { // modificateur du premier attribut
         this.fruits = fruits;
-
     }
 
     public int getTaillePanier() { // accesseur retournant la taille allouee pour l'attibut fruits
@@ -49,15 +54,30 @@ public class Panier {
 
     // groupe 3
     public Fruit getFruit(int i) { // accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou
-                                   // null s'il n'y a rien a cet emplacement
-        return null;
+        return fruits.get(i);                           // null s'il n'y a rien a cet emplacement
+    }
+    
+    public void ajout() throws PanierPleinException { // ajoute le fruit o a la fin du panier si celui-ci n'est
+                                                             // pas plein
+        ArrayList<Fruit> old = (ArrayList<Fruit>) this.fruits.clone();
+        Orange o = new Orange();
+        if (fruits.size() < contenanceMax) {
+            fruits.add(o);
+            pcs.firePropertyChange("value", old, this.fruits);
+        }
+        else
+            throw new PanierPleinException();
+
     }
 
     // groupe 4
     public void ajout(Fruit o) throws PanierPleinException { // ajoute le fruit o a la fin du panier si celui-ci n'est
                                                              // pas plein
-        if (fruits.size() < contenanceMax)
+        ArrayList<Fruit> old = (ArrayList<Fruit>) this.fruits.clone();
+        if (fruits.size() < contenanceMax) {
             fruits.add(o);
+            pcs.firePropertyChange("value", old, this.fruits);
+        }
         else
             throw new PanierPleinException();
 
@@ -65,11 +85,11 @@ public class Panier {
 
     public void setFruit(int i, Fruit f) { // modificateur du fruit contenu dans le panier a l'emplacement n°i par f
                                            // (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
-
+        
     }
 
     public boolean estVide() { // predicat indiquant que le panier est vide
-        return false;
+        return fruits.size() == 0;
     }
 
     public boolean estPlein() { // predicat indiquant que le panier est plein
@@ -78,7 +98,14 @@ public class Panier {
 
     // groupe 5
     public void retrait() throws PanierVideException { // retire le dernier fruit du panier si celui-ci n'est pas vide
+        ArrayList<Fruit> old = (ArrayList<Fruit>) this.fruits.clone();
 
+        if(!this.estVide()) {
+            fruits.remove(fruits.size()-1);
+            pcs.firePropertyChange("value", old, this.fruits);
+        }
+        else 
+            throw new PanierVideException();
     }
 
     // groupe 6

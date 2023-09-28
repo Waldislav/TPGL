@@ -1,6 +1,6 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.model;
 
-import fr.ufrsciencestech.panier.Fruit;
+import fr.ufrsciencestech.panier.model.Fruit;
 
 /**
  * Classe Ananas
