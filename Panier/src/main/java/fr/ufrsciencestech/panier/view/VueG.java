@@ -4,7 +4,7 @@
  */
 package fr.ufrsciencestech.panier.view;
 
-import fr.ufrsciencestech.panier.controller.Controleur;
+import fr.ufrsciencestech.panier.controler.Controleur;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 

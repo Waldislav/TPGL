@@ -29,12 +29,36 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>2.0.5</version>
-</dependency>
+    </dependency>
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-all</artifactId>
+        <version>1.9.5</version>
+    </dependency>
   </dependencies>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
+          <plugin> <!-- Pour avoir le code coverage -->
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.5</version>
+            <executions>
+                    <execution>
+                            <goals>
+                                    <goal>prepare-agent</goal>
+                            </goals>
+                    </execution>
+                    <execution>
+                            <id>report</id>
+                            <phase>test</phase>
+                            <goals>
+                                    <goal>report</goal>
+                            </goals>
+                    </execution>
+            </executions>
+	    </plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>

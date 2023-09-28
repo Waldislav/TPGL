@@ -5,7 +5,7 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd">
     <!-- ===== Déclaration des références ===== -->
     <bean id="Vue" class="fr.ufrsciencestech.panier.view.VueGraphiqueAWT"></bean>
-    <bean id="Controleur" class="fr.ufrsciencestech.panier.controller.Controleur"></bean>
+    <bean id="Controleur" class="fr.ufrsciencestech.panier.controler.Controleur"></bean>
     
     <!-- ===== Utilisation des références ===== -->
     <bean id="MVC" class="fr.ufrsciencestech.panier.TestMVC">

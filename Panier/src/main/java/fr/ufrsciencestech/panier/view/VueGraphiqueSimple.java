@@ -4,7 +4,7 @@
  */
 package fr.ufrsciencestech.panier.view;
 
-import fr.ufrsciencestech.panier.controller.Controleur;
+import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.Panier;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -61,6 +61,7 @@ public class VueGraphiqueSimple extends javax.swing.JFrame implements VueG{
         affiche.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         affiche.setText("0");
         affiche.setToolTipText("");
+        affiche.setName("Affichage"); // NOI18N
         getContentPane().add(affiche, java.awt.BorderLayout.CENTER);
 
         dec.setText("-");

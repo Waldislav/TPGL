@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier;
 
 
-import fr.ufrsciencestech.panier.controller.Controleur;
+import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.Panier;
 import fr.ufrsciencestech.panier.view.VueConsole;
 import fr.ufrsciencestech.panier.view.VueG;
