@@ -1,10 +1,12 @@
 package fr.ufrsciencestech.panier;
 
+import fr.ufrsciencestech.panier.Fruit;
+
 /**
  *
  * @author roudet
  */
-public class Cerise {
+public class Cerise implements Fruit{
     private double prix;
     private String origine;
 	
@@ -86,6 +88,3 @@ public class Cerise {
         System.out.println("Origine cerise 2 : "+c2.getOrigine());
    }
 }
-
-
-//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

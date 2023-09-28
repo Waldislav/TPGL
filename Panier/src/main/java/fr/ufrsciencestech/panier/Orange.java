@@ -4,7 +4,7 @@ package fr.ufrsciencestech.panier;
  *
  * @author roudet
  */
-public class Orange {
+public class Orange implements Fruit{
     private double prix;
     private String origine;
 	
@@ -21,7 +21,7 @@ public class Orange {
 	else
 	    this.prix = prix;
 
-	if(origine.equals("") || origine == null)
+	if(origine.equals(""))
             this.origine = "Espagne";  //Espagne par défaut
 	else
             this.origine = origine;   
@@ -32,10 +32,7 @@ public class Orange {
     }
 
     public void setPrix(double prix){
-    	if(prix >= 0)
-		this.prix=prix;
-	else 
-		System.out.println("Il n'est pas possible de donner un prix négatif");
+	this.prix=prix;
     }
 
     public String getOrigine(){
@@ -43,10 +40,7 @@ public class Orange {
     }
  
     public void setOrigine(String origine){
-    	if(origine.equals("") || origine == null)
-            System.out.println("Origine invalide, rentrez une origine avec au minimum un caractère");
-	else
-		this.origine=origine;
+	this.origine=origine;
     }
 
     @Override
@@ -70,23 +64,6 @@ public class Orange {
 
     public static void main (String[] args){
         //Ecrire ici vos tests
-        Orange o1 = new Orange();
-        Orange o2 = new Orange(1,"Colombie");
-        Orange o3 = new Orange(-10,"");
-        System.out.println("L'orange 1 : "+o1);
-        System.out.println("L'orange 2 : "+o2);
-        System.out.println("L'orange 3 : "+o3);
-        System.out.println("");
-        o1.setPrix(1.5);
-        o2.setOrigine("Portugal");
-        System.out.println("Prix Orange 1 : "+o1.getPrix());
-        System.out.println("Origine Orange 1 : "+o1.getOrigine());
-        System.out.println("");
-        System.out.println("Prix Orange 2 : "+o2.getPrix());
-        System.out.println("Origine Orange 2 : "+o2.getOrigine());
-	//System.out.println("premier test Orange");
+	System.out.println("premier test Orange");
    }
 }
-
-
-//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
